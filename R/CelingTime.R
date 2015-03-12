@@ -1,5 +1,3 @@
-# CelingTime- Round at time UP with arbitrary precision
-# based on FloorTime sourced from here: http://stackoverflow.com/questions/16803867/round-a-date-in-r-to-an-arbitrary-level-of-precision
 CeilingTime <- function(x, k = 1, unit = c("second", "minute", "hour", "day",
                                             "week", "month", "year")) {
 # Function requires lubridate - load it
@@ -9,7 +7,7 @@ CeilingTime <- function(x, k = 1, unit = c("second", "minute", "hour", "day",
 
   switch(unit, second = {nmax <- 60},
                minute = {nmax <- 60},
-               hour = {nmax <- 24})
+               hour   = {nmax <- 24})
 
   cuts <- seq(from = 0, to = nmax - 1, by = k)
 
@@ -28,30 +26,18 @@ CeilingTime <- function(x, k = 1, unit = c("second", "minute", "hour", "day",
 # Round up to the next kth unit interval
   if (unit=="second") {
     rounded <- rounded + seconds(k)
-  } else {
-    if (unit == "minute") {
+  } else if (unit == "minute") {
       rounded <- rounded + minutes(k)
-    }
-  } else {
-    if (unit == "hour") {
+  } else if (unit == "hour") {
       rounded <- rounded + hours(k)
-    }
-  } else {
-    if (unit == "day") {
+  } else if (unit == "day") {
       rounded <- rounded + days(k)
-    }
-  } else {
-    if (unit == "week") {
+  } else if (unit == "week") {
       rounded <- rounded + weeks(k)
-    }
-  } else {
-    if (unit == "month") {
+  } else if (unit == "month") {
       rounded <- rounded + months(k)
-    }
-  } else {
-    if(unit == "year") {
+  } else if(unit == "year") {
       rounded <- rounded + years(k)
     }
-  }
   return(rounded)
 }
