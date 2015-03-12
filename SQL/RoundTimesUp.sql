@@ -1,0 +1,1 @@
+﻿DATEADD(MINUTE,DATEDIFF(MINUTE,0,time.goes.here)/15*15+15,0)
