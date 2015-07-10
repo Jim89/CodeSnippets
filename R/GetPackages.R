@@ -4,7 +4,7 @@ if (!file.exists("./packages")) {
 }
 
 # set the list of packages required
-packageList <- c("packages.go.here")
+packageList <- c("package.1.goes.here", "package.2.goes.here", "package.3.goes.here") # Put in the (quoted) names of the packages you want to install, separated by commas
 
 # create the function to find packages, and all dependances
 GetPackages <- function (packageList) {
