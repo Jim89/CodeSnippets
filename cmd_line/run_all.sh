@@ -28,7 +28,7 @@ echo "Building and selecting the schema..."
 schema="$2"
 schema_qry="drop schema if exists ${schema} cascade;
 create schema ${schema}; "
-psql --quiet -d ds022_complaints -U $1 -h prodlnx3049.bc.jsplc.net -L logs/log.txt -c "${schema_qry}"
+psql --quiet -d [database] -U $1 -h [server] -L logs/log.txt -c "${schema_qry}"
 
 echo "done."
 
@@ -49,7 +49,7 @@ else
   echo -------------------------------------------
   now=$(date +"%y-%d-%m %T")
   echo "Started: $now"
-  psql --quiet -U $1 -v schema=$schema -v ON_ERROR_STOP=1 -d ds022_complaints -h prodlnx3049.bc.jsplc.net -f $f -L logs/log.txt || exit 1
+  psql --quiet -U $1 -v schema=$schema -v ON_ERROR_STOP=1 -d [database] -h [server] -f $f -L logs/log.txt || exit 1
   now=$(date +"%y-%d-%m %T")
   echo "Finished: $now"
 fi
